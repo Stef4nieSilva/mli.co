@@ -28,7 +28,9 @@
   --papel:#efece5; --tinta:#0b0b0d;
   --vinho:#4a1220; --marrom:#3e2a20; --offwhite:#e3ddd2; --cinza-lavado:#6b7c93;
   --cromo:linear-gradient(168deg,#fff 0%,#cfcfd8 14%,#5f5f6b 38%,#fff 52%,#8e8e9a 70%,#e9e9f0 88%,#6d6d78 100%);
-  --gotico:"Pirata One",serif; --corpo:"Jost",sans-serif; --util:"Space Mono",monospace;
+  --gotico:"Pirata One","Bodoni Moda","Playfair Display",serif;
+  --corpo:"Jost","Futura","Century Gothic",sans-serif;
+  --util:"Space Mono","Courier New",monospace;
   --topo:54px; --max:1280px; --gut:clamp(16px,4vw,44px); --barra:56px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -61,7 +63,7 @@ body>header{position:sticky;top:0;z-index:60;display:flex;align-items:center;jus
 .sacola-btn{font-family:var(--util);font-size:.6rem;letter-spacing:.18em;display:flex;align-items:center;gap:8px}
 .sacola-btn i{width:19px;height:19px;border-radius:999px;background:var(--prata);color:var(--breu);display:grid;place-items:center;font-size:.56rem;font-weight:700;font-style:normal;font-family:var(--util)}
 @media(max-width:880px){.abas,.sacola-btn{display:none}}
-@media(min-width:881px){:root{--topo:68px}.logo-topo{height:44px}}
+@media(min-width:881px){:root{--topo:74px}.logo-topo{height:50px}}
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:65;display:none;grid-template-columns:1fr 1fr 1fr;background:rgba(6,6,7,.95);backdrop-filter:blur(16px);border-top:1px solid var(--linha);padding-bottom:env(safe-area-inset-bottom)}
 .barra button{height:var(--barra);font-family:var(--util);font-size:.56rem;letter-spacing:.16em;color:var(--fosca);text-align:center;transition:.3s}
 .barra button[aria-selected="true"]{color:var(--prata)}
@@ -104,7 +106,8 @@ body>header{position:sticky;top:0;z-index:60;display:flex;align-items:center;jus
 /* looks */
 .looks{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linha)}
 @media(min-width:700px){.looks{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1080px){.looks{grid-template-columns:repeat(5,1fr)}}
+@media(min-width:1080px){.looks{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1700px){.looks{grid-template-columns:repeat(6,1fr)}}
 .look{background:var(--grafite);display:flex;flex-direction:column;transition:.35s}
 .look:hover{background:var(--fumaca)}
 .look-foto{aspect-ratio:2/3;overflow:hidden;position:relative;background:#c9c7c4}
@@ -120,13 +123,13 @@ body>header{position:sticky;top:0;z-index:60;display:flex;align-items:center;jus
 /* manual */
 .manual{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
 .regra-card{background:var(--grafite);padding:clamp(20px,3vw,28px);display:flex;flex-direction:column}
-.palco{height:190px;position:relative;margin-bottom:20px}
+.palco{height:190px;position:relative;margin-bottom:20px;overflow:hidden}
 .palco img{position:absolute;bottom:0;max-height:100%;width:auto;filter:drop-shadow(0 14px 26px rgba(0,0,0,.8))}
 .palco img:first-child{left:2%;height:96%}
 .palco img:last-child{right:2%;height:72%}
 .palco.foto img{position:static;height:100%;width:auto;margin:0 auto;border-radius:2px}
-.palco.unico{display:grid;place-items:center}
-.palco.unico img,.palco.unico img:first-child,.palco.unico img:last-child{position:static;inset:auto;height:100%;max-height:100%;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 16px 30px rgba(0,0,0,.85)) drop-shadow(0 0 34px rgba(220,220,227,.14))}
+.palco.unico{display:flex;align-items:center;justify-content:center}
+.palco.unico img,.palco.unico img:first-child,.palco.unico img:last-child{position:static;inset:auto;height:auto;max-height:190px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 16px 30px rgba(0,0,0,.85)) drop-shadow(0 0 34px rgba(220,220,227,.14))}
 .regra-num{font-family:var(--gotico);font-size:2rem;line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
 .regra-card h4{font-family:var(--util);font-weight:700;font-size:.74rem;letter-spacing:.1em;margin:8px 0 10px}
 .regra-card p{font-size:.92rem;color:#9a9aa6}
@@ -553,7 +556,7 @@ footer img{width:min(260px,64vw);margin:0 auto 18px}
     <section class="cap" id="cap0">
       <div class="cap-topo"><span class="cap-num">00</span><h2>Resumo executivo</h2></div>
       <div class="cap-linha"></div>
-      <p class="texto">MLI.CO vende um armário fechado em preto para quem sai às sete e só volta tarde. Doze peças que se cruzam entre si, onze maneiras prontas de montá-las e uma regra de cor que impede o erro. Não competimos por variedade: competimos por certeza — a mesma base vai para a reunião das nove, para o almoço fora e para o jantar sem passar em casa para trocar.</p>
+      <p class="texto">MLI.CO vende um armário fechado em preto para quem sai às sete e só volta tarde. Cinquenta peças que se cruzam entre si, onze maneiras prontas de montá-las e uma regra de cor que impede o erro. Não competimos por variedade: competimos por certeza — a mesma base vai para a reunião das nove, para o almoço fora e para o jantar sem passar em casa para trocar.</p>
       <span class="sub">Números do drop 01 · Dia Inteiro</span>
       <div class="kpis">
         <div class="kpi"><b>50</b><span>peças no armário</span></div>
@@ -726,7 +729,7 @@ footer img{width:min(260px,64vw);margin:0 auto 18px}
         <div><b>SEÇÃO</b><span style="font-family:var(--util);font-weight:700;font-size:.85rem;letter-spacing:.16em">DIREÇÃO DE IMAGEM</span></div>
         <div><b>CORPO</b><span style="font-size:1rem;color:#a2a2ad">Modelagem feita pra cair solta sem parecer grande demais.</span></div>
         <div><b>DADO</b><span style="font-family:var(--util);font-size:.72rem">R$ 349,00 · TAM 40</span></div>
-        <div><b>MICRO</b><span class="eyebrow">DROP 01 · 12 PEÇAS</span></div>
+        <div><b>MICRO</b><span class="eyebrow">DROP 01 · 50 PEÇAS</span></div>
       </div>
     </section>
 
