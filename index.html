@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<!--
+  ══════════════════════════════════════════════════════════════
+  MLI.CO — lê-se "mili ponto co"
+  Arquivo único + pasta assets. Suba no GitHub e ative o Pages.
+
+  IMAGENS JÁ INCLUÍDAS
+  assets/lookbook.jpg .......... a fileira das seis
+  assets/looks/look-1..6.jpg ... cada modelo recortada
+  assets/produtos/*.png ........ as 12 peças com fundo removido
+  assets/logo-principal.jpg .... logo cromada
+  assets/logo-etiqueta.jpg ..... logo de traço (etiqueta)
+
+  Para trocar qualquer uma, basta salvar por cima com o mesmo nome.
+  ══════════════════════════════════════════════════════════════
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060607">
+<meta name="description" content="MLI.CO — um armário preto que resolve o dia inteiro. Drop 01: seis looks, doze peças.">
+<title>MLI.CO — Drop 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Jost:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --breu:#060607; --grafite:#0e0e11; --fumaca:#17171c;
+  --linha:#2a2a32; --linha-clara:#3a3a45;
+  --prata:#dcdce3; --fosca:#8a8a95; --apagada:#5a5a66;
+  --papel:#efece5; --tinta:#0b0b0d;
+  --vinho:#4a1220; --marrom:#3e2a20; --offwhite:#e3ddd2; --cinza-lavado:#6b7c93;
+  --cromo:linear-gradient(168deg,#fff 0%,#cfcfd8 14%,#5f5f6b 38%,#fff 52%,#8e8e9a 70%,#e9e9f0 88%,#6d6d78 100%);
+  --gotico:"Pirata One",serif; --corpo:"Jost",sans-serif; --util:"Space Mono",monospace;
+  --max:1280px; --gut:clamp(16px,4vw,44px); --barra:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--breu);color:var(--prata);font-family:var(--corpo);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--prata);outline-offset:3px}
+::selection{background:var(--prata);color:var(--breu)}
+
+.cromo{background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gut)}
+.eyebrow{font-family:var(--util);font-size:clamp(.55rem,1.5vw,.63rem);letter-spacing:.28em;text-transform:uppercase;color:var(--fosca)}
+.titulo{font-family:var(--gotico);font-weight:400;font-size:clamp(2.3rem,7vw,4.4rem);line-height:.95}
+.texto{color:#a2a2ad;font-size:clamp(.94rem,2.2vw,1.02rem);max-width:58ch}
+.selo{display:inline-block;border:1px solid var(--linha-clara);padding:9px 15px;font-family:var(--util);font-size:.58rem;letter-spacing:.22em;color:var(--prata)}
+.risca{border-top:1px solid var(--linha)}
+section{padding:clamp(54px,8vw,100px) 0}
+.cabeca{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:clamp(26px,4.5vw,44px)}
+
+/* topo */
+.ticker{border-bottom:1px solid var(--linha);overflow:hidden;white-space:nowrap;padding:9px 0}
+.ticker div{display:inline-block;animation:corre 36s linear infinite;font-family:var(--util);font-size:.6rem;letter-spacing:.28em;color:var(--fosca)}
+@keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+body>header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px var(--gut);background:rgba(6,6,7,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--linha)}
+.logo-topo{height:26px;width:auto}
+.abas{display:flex;gap:2px;border:1px solid var(--linha);border-radius:999px;padding:3px}
+.aba{font-family:var(--util);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 18px;border-radius:999px;color:var(--fosca);transition:.3s}
+.aba[aria-selected="true"]{background:var(--prata);color:var(--breu)}
+.sacola-btn{font-family:var(--util);font-size:.6rem;letter-spacing:.18em;display:flex;align-items:center;gap:8px}
+.sacola-btn i{width:19px;height:19px;border-radius:999px;background:var(--prata);color:var(--breu);display:grid;place-items:center;font-size:.56rem;font-weight:700;font-style:normal;font-family:var(--util)}
+@media(max-width:880px){.abas,.sacola-btn{display:none}}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:65;display:none;grid-template-columns:1fr 1fr 1fr;background:rgba(6,6,7,.95);backdrop-filter:blur(16px);border-top:1px solid var(--linha);padding-bottom:env(safe-area-inset-bottom)}
+.barra button{height:var(--barra);font-family:var(--util);font-size:.56rem;letter-spacing:.16em;color:var(--fosca);text-align:center;transition:.3s}
+.barra button[aria-selected="true"]{color:var(--prata)}
+.barra .comprar{background:var(--cromo);color:var(--breu);font-weight:700}
+@media(max-width:880px){.barra{display:grid}body{padding-bottom:calc(var(--barra) + env(safe-area-inset-bottom))}}
+
+.pagina{display:none}
+.pagina.ativa{display:block;animation:entra .5s ease both}
+@keyframes entra{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{padding:clamp(48px,8vw,90px) 0 clamp(30px,5vw,46px);position:relative;overflow:hidden}
+.hero h1{margin:20px 0 18px;max-width:14ch}
+.acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;max-width:560px}
+.btn{font-family:var(--util);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--linha-clara);transition:.3s;text-align:center;flex:1 1 200px}
+.btn:hover{border-color:var(--prata)}
+.btn-cromo{background:var(--cromo);color:var(--breu);font-weight:700;border-color:transparent}
+.btn-cromo:hover{filter:brightness(1.12)}
+.brilho{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:0 0 8px 2px #fff;animation:pisca 5s infinite}
+@keyframes pisca{0%,100%{opacity:.1;transform:scale(.5)}50%{opacity:.8;transform:scale(1.3)}}
+
+/* elenco — a fileira */
+.elenco-rolo{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-block:1px solid var(--linha)}
+.elenco-rolo::-webkit-scrollbar{display:none}
+.elenco{position:relative;width:100%;min-width:940px;aspect-ratio:2820/1120;background:#c9c7c4}
+.elenco>img{width:100%;height:100%;object-fit:cover}
+.ponto{position:absolute;top:0;bottom:0;width:16.666%;border-inline:1px solid transparent;transition:.35s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:14px}
+.ponto:hover,.ponto:focus-visible{background:linear-gradient(to top,rgba(6,6,7,.82),rgba(6,6,7,0) 55%);border-color:rgba(220,220,227,.35)}
+.ponto span{font-family:var(--util);font-size:.55rem;letter-spacing:.18em;color:#fff;opacity:0;transform:translateY(8px);transition:.35s;text-align:center;text-shadow:0 2px 10px #000;line-height:1.9}
+.ponto:hover span,.ponto:focus-visible span{opacity:1;transform:none}
+.dica{font-family:var(--util);font-size:.55rem;letter-spacing:.2em;color:var(--apagada);text-align:center;padding:12px 16px}
+
+/* looks */
+.looks{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linha)}
+@media(min-width:700px){.looks{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1080px){.looks{grid-template-columns:repeat(6,1fr)}}
+.look{background:var(--grafite);display:flex;flex-direction:column;transition:.35s}
+.look:hover{background:var(--fumaca)}
+.look-foto{aspect-ratio:2/3;overflow:hidden;position:relative;background:#c9c7c4}
+.look-foto img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .5s}
+.look:hover .look-foto img{transform:scale(1.05)}
+.look-hora{position:absolute;top:0;left:0;background:rgba(6,6,7,.86);color:var(--prata);font-family:var(--util);font-size:.55rem;letter-spacing:.16em;padding:6px 9px}
+.look-chip{position:absolute;bottom:10px;right:10px;width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.5)}
+.look-corpo{padding:14px 14px 18px}
+.look-nome{font-family:var(--gotico);font-size:1.6rem;line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.look-frase{font-size:.86rem;color:#9a9aa6;margin-top:8px;line-height:1.55}
+.look-cor{font-family:var(--util);font-size:.52rem;letter-spacing:.16em;color:var(--apagada);margin-top:10px}
+
+/* manual */
+.manual{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.regra-card{background:var(--grafite);padding:clamp(20px,3vw,28px);display:flex;flex-direction:column}
+.palco{height:190px;position:relative;margin-bottom:20px}
+.palco img{position:absolute;bottom:0;max-height:100%;width:auto;filter:drop-shadow(0 14px 26px rgba(0,0,0,.8))}
+.palco img:first-child{left:2%;height:96%}
+.palco img:last-child{right:2%;height:72%}
+.palco.foto img{position:static;height:100%;width:auto;margin:0 auto;border-radius:2px}
+.regra-num{font-family:var(--gotico);font-size:2rem;line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.regra-card h4{font-family:var(--util);font-weight:700;font-size:.74rem;letter-spacing:.1em;margin:8px 0 10px}
+.regra-card p{font-size:.92rem;color:#9a9aa6}
+
+/* peças */
+.filtros{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.filtro{font-family:var(--util);font-size:.56rem;letter-spacing:.16em;padding:9px 15px;border:1px solid var(--linha);color:var(--fosca);transition:.25s;text-transform:uppercase}
+.filtro[aria-pressed="true"]{background:var(--prata);color:var(--breu);border-color:var(--prata)}
+.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linha)}
+@media(min-width:640px){.grade{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px){.grade{grid-template-columns:repeat(4,1fr)}}
+.peca{background:var(--grafite);display:flex;flex-direction:column;transition:background .35s;position:relative}
+.peca:hover{background:var(--fumaca)}
+.peca.some{display:none}
+.moldura{aspect-ratio:351/377;position:relative;display:grid;place-items:center;padding:12% 14%;background:radial-gradient(65% 60% at 50% 55%,#191920 0%,#0c0c0f 72%)}
+.moldura img{max-height:100%;width:auto;object-fit:contain;transition:transform .6s ease;filter:drop-shadow(0 18px 30px rgba(0,0,0,.85))}
+.peca:hover .moldura img{transform:scale(1.06)}
+.num{position:absolute;left:11px;bottom:8px;font-family:var(--gotico);font-size:1.9rem;line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
+.tarja{position:absolute;top:9px;right:9px;background:var(--cromo);color:var(--breu);font-family:var(--util);font-size:.48rem;font-weight:700;letter-spacing:.16em;padding:4px 7px}
+.peca-nome{font-family:var(--util);font-size:clamp(.64rem,1.8vw,.73rem);font-weight:700;letter-spacing:.09em;padding:13px 14px 0}
+.peca-spec{font-family:var(--util);font-size:.54rem;letter-spacing:.05em;color:var(--apagada);padding:6px 14px 12px;line-height:1.7}
+.peca-pe{margin-top:auto;padding:10px 14px 0;border-top:1px solid var(--linha);display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap;padding-bottom:14px}
+.peca-preco{font-family:var(--util);font-size:.74rem}
+.peca-grade{font-family:var(--util);font-size:.53rem;letter-spacing:.13em;color:var(--apagada)}
+
+/* medidas */
+.tabela-rolo{overflow-x:auto;border:1px solid var(--linha)}
+table{width:100%;border-collapse:collapse;min-width:520px;font-family:var(--util);font-size:.65rem}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--linha);white-space:nowrap}
+th{background:var(--fumaca);font-weight:400;letter-spacing:.15em;font-size:.55rem;text-transform:uppercase;color:var(--fosca)}
+td:first-child{color:var(--prata);letter-spacing:.12em}
+tr:last-child td{border-bottom:none}
+.nota{font-family:var(--util);font-size:.55rem;letter-spacing:.12em;color:var(--apagada);margin-top:14px;line-height:2}
+
+/* gavetas */
+.cortina{position:fixed;inset:0;background:rgba(3,3,4,.88);backdrop-filter:blur(5px);z-index:70;opacity:0;pointer-events:none;transition:.35s}
+.cortina.abre{opacity:1;pointer-events:auto}
+.gaveta{position:fixed;top:0;right:0;height:100%;z-index:80;background:var(--grafite);border-left:1px solid var(--linha);transform:translateX(102%);transition:transform .45s cubic-bezier(.7,0,.2,1);overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column}
+.gaveta.abre{transform:none}
+#painel{width:min(840px,100%)}
+#sacola{width:min(440px,100%);z-index:85}
+.gaveta-topo{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px var(--gut);border-bottom:1px solid var(--linha);position:sticky;top:0;background:var(--grafite);z-index:3}
+.fecha{font-family:var(--util);font-size:.58rem;letter-spacing:.2em}
+.corpo2{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:840px){.corpo2{grid-template-columns:1fr}}
+.lado-foto{background:#0a0a0c;display:grid;place-items:center;overflow:hidden;border-right:1px solid var(--linha);position:relative;min-height:300px}
+.lado-foto img{width:100%;height:100%;object-fit:cover}
+.lado-foto.peca-foto{padding:12%;background:radial-gradient(65% 60% at 50% 55%,#191920 0%,#0c0c0f 72%)}
+.lado-foto.peca-foto img{width:auto;max-height:100%;object-fit:contain;filter:drop-shadow(0 20px 34px rgba(0,0,0,.85))}
+.lado-dados{padding:26px var(--gut) 40px}
+.lado-dados h3{font-family:var(--util);font-weight:700;font-size:.98rem;letter-spacing:.11em;margin:10px 0 8px}
+.lado-dados h3.grande{font-family:var(--gotico);font-weight:400;font-size:2.6rem;letter-spacing:.02em;margin:6px 0 4px}
+.preco{font-family:var(--util);font-size:.88rem;margin-bottom:18px}
+.desc{color:#9a9aa6;font-size:.94rem;margin-bottom:24px}
+.campo{margin-bottom:22px}
+.campo>label{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.escolhido{font-family:var(--util);font-size:.6rem;color:var(--prata)}
+.cores{display:flex;gap:10px;flex-wrap:wrap}
+.cor{width:34px;height:34px;border-radius:50%;border:1px solid var(--linha);transition:.25s}
+.cor[aria-pressed="true"]{box-shadow:0 0 0 2px var(--breu),0 0 0 3px var(--prata)}
+.tamanhos{display:flex;gap:6px;flex-wrap:wrap}
+.tam{min-width:52px;padding:11px 8px;text-align:center;border:1px solid var(--linha);font-family:var(--util);font-size:.64rem;transition:.25s}
+.tam[aria-pressed="true"]{background:var(--prata);color:var(--breu);border-color:var(--prata)}
+.tam[disabled]{opacity:.26;cursor:not-allowed;text-decoration:line-through}
+.link{font-family:var(--util);font-size:.55rem;letter-spacing:.15em;color:var(--fosca);text-decoration:underline;text-underline-offset:4px}
+.qtd{display:inline-flex;align-items:center;border:1px solid var(--linha)}
+.qtd button{width:42px;height:42px;text-align:center}
+.qtd span{width:44px;text-align:center;font-family:var(--util);font-size:.74rem;display:inline-block}
+.cta{width:100%;padding:18px;background:var(--cromo);color:var(--breu);font-family:var(--util);font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.3s;text-align:center}
+.cta:hover{filter:brightness(1.12)}
+.cta[disabled]{background:var(--fumaca);color:#5a5a66;cursor:not-allowed;filter:none;border:1px solid var(--linha)}
+.aviso{font-family:var(--util);font-size:.54rem;letter-spacing:.13em;color:var(--apagada);margin-top:12px;text-align:center;line-height:1.9}
+
+/* lista de peças do look */
+.monta{border-top:1px solid var(--linha);margin-top:6px}
+.monta-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--linha);width:100%;transition:.25s}
+.monta-item:hover{padding-left:6px}
+.monta-mini{width:52px;height:52px;flex:none;background:#0c0c0f;display:grid;place-items:center;padding:6px;border:1px solid var(--linha)}
+.monta-mini img{max-height:100%;width:auto}
+.monta-mini.fora{color:var(--apagada);font-family:var(--util);font-size:.5rem;letter-spacing:.1em;text-align:center;line-height:1.3}
+.monta-txt{flex:1;min-width:0}
+.monta-txt b{font-family:var(--util);font-size:.66rem;font-weight:700;letter-spacing:.08em;display:block}
+.monta-txt span{font-family:var(--util);font-size:.53rem;letter-spacing:.1em;color:var(--apagada)}
+.monta-seta{font-family:var(--util);font-size:.6rem;color:var(--fosca)}
+
+/* etiqueta */
+.etiqueta{background:var(--papel);color:var(--tinta);border-radius:3px;padding:18px 16px;margin-top:28px;font-family:var(--util);position:relative;box-shadow:0 20px 44px rgba(0,0,0,.65);transform-origin:26px -16px;animation:balanca 7s ease-in-out infinite}
+@keyframes balanca{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+.etiqueta::before{content:"";position:absolute;top:13px;left:19px;width:11px;height:11px;border-radius:50%;border:1.5px solid #b8b3a8;background:var(--breu)}
+.etiqueta img{width:118px;margin:0 auto 12px;mix-blend-mode:multiply}
+.etq-linhas{border-top:1px solid rgba(11,11,13,.18);padding-top:10px;font-size:.56rem;letter-spacing:.1em;line-height:2}
+.etq-linhas div{display:flex;justify-content:space-between;gap:12px}
+.legenda{font-family:var(--util);font-size:.53rem;letter-spacing:.15em;color:var(--apagada);margin-top:12px;text-align:center}
+
+/* sacola */
+.sacola-itens{flex:1;overflow-y:auto;padding:4px var(--gut)}
+.item{display:flex;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.item h4{font-family:var(--util);font-weight:700;font-size:.7rem;letter-spacing:.09em}
+.item p{font-family:var(--util);font-size:.54rem;letter-spacing:.11em;color:var(--fosca);margin-top:6px}
+.item button{font-family:var(--util);font-size:.52rem;letter-spacing:.11em;color:var(--apagada);margin-top:8px;text-decoration:underline}
+.item strong{font-family:var(--util);font-size:.7rem;font-weight:400;white-space:nowrap}
+.sacola-pe{padding:20px var(--gut) 28px;border-top:1px solid var(--linha)}
+.total{display:flex;justify-content:space-between;font-family:var(--util);font-size:.76rem;margin-bottom:16px}
+.vazia{padding:54px var(--gut);text-align:center;color:var(--apagada);font-family:var(--util);font-size:.6rem;letter-spacing:.15em;line-height:2.4}
+
+/* componentes de documento */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.cartao{background:var(--grafite);padding:clamp(20px,3.4vw,30px)}
+.cartao h4{font-family:var(--util);font-weight:700;font-size:.71rem;letter-spacing:.1em;margin-bottom:12px}
+.cartao p{font-size:.92rem;color:#9a9aa6}
+.mostra{aspect-ratio:16/11;display:grid;place-items:center;padding:22px}
+.mostra.negativo{background:#000}
+.mostra.positivo{background:var(--papel)}
+.regra{font-family:var(--util);font-size:.55rem;letter-spacing:.13em;color:var(--apagada);padding:0 clamp(20px,3.4vw,30px) 24px;line-height:2.1}
+.regra b{color:var(--prata);font-weight:400}
+.paleta{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.tinta{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:13px}
+.tinta b{font-family:var(--util);font-weight:700;font-size:.64rem;letter-spacing:.09em}
+.tinta span{font-family:var(--util);font-size:.5rem;letter-spacing:.09em;margin-top:4px;opacity:.85}
+.tipo{border-bottom:1px solid var(--linha);padding:24px 0;display:grid;grid-template-columns:minmax(150px,1fr) 2fr;gap:18px;align-items:baseline}
+@media(max-width:700px){.tipo{grid-template-columns:1fr}}
+.amostra{font-size:clamp(1.6rem,5.5vw,2.8rem);line-height:1.15;word-break:break-word}
+.mesa{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(22px,4vw,34px);align-items:start}
+.tag{background:var(--papel);color:var(--tinta);border-radius:4px;padding:24px 20px;font-family:var(--util);box-shadow:0 24px 56px rgba(0,0,0,.65)}
+.tag::before{content:"";display:block;width:13px;height:13px;border-radius:50%;border:1.5px solid #b8b3a8;background:var(--breu);margin-bottom:16px}
+.tag img{width:150px;margin:0 auto 16px;mix-blend-mode:multiply}
+.fio{border-top:1px solid rgba(11,11,13,.2);margin:13px 0}
+.tag-lista{font-size:.57rem;letter-spacing:.1em;line-height:2.1}
+.tag-lista div{display:flex;justify-content:space-between;gap:14px}
+.simbolos{display:flex;gap:14px;font-size:1.25rem;margin:12px 0 4px}
+.tag-nota{font-size:.51rem;letter-spacing:.07em;color:#55524b;line-height:1.95}
+.tempo{border-left:1px solid var(--linha);padding-left:24px}
+.marco{padding:20px 0;position:relative}
+.marco::before{content:"";position:absolute;left:-29px;top:28px;width:9px;height:9px;background:var(--prata);border-radius:50%}
+.marco h4{font-family:var(--util);font-weight:700;font-size:.74rem;letter-spacing:.09em;margin-top:6px}
+.marco p{color:#9a9aa6;font-size:.92rem;margin-top:6px}
+/* ═════════ BASTIDORES — DOSSIÊ ═════════ */
+.doc{display:grid;grid-template-columns:1fr;max-width:var(--max);margin:0 auto}
+@media(min-width:1040px){.doc{grid-template-columns:236px 1fr;gap:0}}
+
+.doc-indice{position:sticky;top:51px;z-index:40;background:var(--breu);border-bottom:1px solid var(--linha);padding:10px var(--gut)}
+.doc-indice ol{list-style:none;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.doc-indice ol::-webkit-scrollbar{display:none}
+.doc-indice button{white-space:nowrap;font-family:var(--util);font-size:.55rem;letter-spacing:.14em;color:var(--apagada);padding:8px 12px;border:1px solid transparent;transition:.25s}
+.doc-indice button[aria-current="true"]{color:var(--prata);border-color:var(--linha);background:var(--grafite)}
+@media(min-width:1040px){
+  .doc-indice{position:sticky;top:51px;height:calc(100vh - 51px);border-bottom:none;border-right:1px solid var(--linha);padding:34px 0 34px var(--gut);overflow-y:auto}
+  .doc-indice ol{flex-direction:column;overflow:visible;gap:0}
+  .doc-indice{overflow-x:hidden}
+  .doc-indice button{display:block;width:100%;border:none;border-left:1px solid var(--linha);padding:9px 10px 9px 14px;font-size:.57rem;letter-spacing:.1em;white-space:normal;line-height:1.6}
+  .doc-indice button[aria-current="true"]{background:none;border-left-color:var(--prata)}
+}
+.indice-rot{font-family:var(--util);font-size:.5rem;letter-spacing:.24em;color:#3f3f49;margin-bottom:12px;display:none}
+@media(min-width:1040px){.indice-rot{display:block}}
+
+.doc-corpo{min-width:0;padding-inline:var(--gut)}
+@media(min-width:1040px){.doc-corpo{padding-inline:clamp(30px,4vw,58px)}}
+
+.capa{display:block;position:static;background:none;border:none;backdrop-filter:none;padding:clamp(46px,7vw,86px) 0 clamp(34px,5vw,54px);border-bottom:1px solid var(--linha)}
+.capa h1{font-family:var(--gotico);font-weight:400;font-size:clamp(2.4rem,7vw,4.2rem);line-height:.98;margin:18px 0 20px}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);margin-top:30px}
+.ficha div{background:var(--grafite);padding:14px 16px}
+.ficha dt{font-family:var(--util);font-size:.5rem;letter-spacing:.2em;color:var(--apagada);text-transform:uppercase}
+.ficha dd{font-family:var(--util);font-size:.68rem;letter-spacing:.06em;margin-top:7px}
+
+.cap{padding:clamp(46px,6vw,78px) 0;border-bottom:1px solid var(--linha);scroll-margin-top:110px}
+@media(min-width:1040px){.cap{scroll-margin-top:70px}}
+.cap-topo{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.cap-num{font-family:var(--gotico);font-size:clamp(1.6rem,4vw,2.2rem);line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent;flex:none}
+.cap h2{font-family:var(--util);font-weight:700;font-size:clamp(.78rem,2.2vw,.92rem);letter-spacing:.18em;text-transform:uppercase}
+.cap-linha{border-top:1px solid var(--linha);margin:14px 0 26px}
+.cap>p.texto{margin-bottom:26px}
+.sub{font-family:var(--util);font-size:.55rem;letter-spacing:.22em;color:var(--fosca);text-transform:uppercase;margin:34px 0 14px;display:block}
+.sub:first-of-type{margin-top:0}
+
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.duo>div{background:var(--grafite);padding:22px}
+.duo h5{font-family:var(--util);font-size:.6rem;font-weight:700;letter-spacing:.16em;margin-bottom:14px}
+.duo ul{list-style:none;font-size:.9rem;color:#9a9aa6}
+.duo li{padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--linha)}
+.duo li:last-child{border-bottom:none}
+.duo li::before{position:absolute;left:0;font-family:var(--util);font-size:.7rem}
+.sim li::before{content:"+";color:var(--prata)}
+.nao li::before{content:"−";color:#6a4148}
+
+.personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.persona{background:var(--grafite);padding:22px}
+.persona .idade{font-family:var(--util);font-size:.5rem;letter-spacing:.18em;color:var(--apagada)}
+.persona h5{font-family:var(--gotico);font-size:1.7rem;line-height:1.1;margin:6px 0 10px;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.persona p{font-size:.88rem;color:#9a9aa6;margin-bottom:12px}
+.persona .fala{font-family:var(--util);font-size:.58rem;letter-spacing:.06em;color:var(--prata);border-left:1px solid var(--linha-clara);padding-left:12px;line-height:1.9}
+
+.mapa{position:relative;aspect-ratio:16/10;border:1px solid var(--linha);background:
+  repeating-linear-gradient(0deg,transparent 0 47px,#16161b 47px 48px),
+  repeating-linear-gradient(90deg,transparent 0 47px,#16161b 47px 48px),var(--grafite);margin-top:6px}
+.mapa .eixo{position:absolute;font-family:var(--util);font-size:.5rem;letter-spacing:.16em;color:var(--apagada)}
+.mapa .ex-x1{left:10px;bottom:8px}.mapa .ex-x2{right:10px;bottom:8px}
+.mapa .ex-y1{left:10px;top:8px}.mapa .ex-y2{left:10px;bottom:26px}
+.mapa .pin{position:absolute;transform:translate(-50%,-50%);font-family:var(--util);font-size:.52rem;letter-spacing:.1em;color:var(--fosca);white-space:nowrap;display:flex;align-items:center;gap:6px}
+.mapa .pin::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--apagada);flex:none}
+.mapa .pin.nos{color:var(--breu);background:var(--cromo);padding:5px 10px;font-weight:700}
+.mapa .pin.nos::before{background:var(--breu)}
+
+.escala div{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--linha);padding:12px 0}
+.escala b{font-family:var(--util);font-size:.52rem;letter-spacing:.14em;color:var(--apagada);width:90px;flex:none;font-weight:400}
+.escala span{line-height:1.1}
+
+.copy-par{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.copy-par>div{background:var(--grafite);padding:20px}
+.copy-par .rot{font-family:var(--util);font-size:.5rem;letter-spacing:.2em;color:var(--apagada);margin-bottom:10px}
+.copy-par q{font-size:.98rem;color:#c9c9d2;quotes:"“" "”";display:block;line-height:1.5}
+.copy-par .ruim q{color:#6f6f7a;text-decoration:line-through 1px}
+
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:520px;border:1px solid var(--linha)}
+.ig>*{aspect-ratio:1;overflow:hidden;background:#0c0c0f;position:relative}
+.ig img{width:100%;height:100%;object-fit:cover}
+.ig .prod{padding:16%;display:grid;place-items:center}
+.ig .prod img{width:auto;height:100%;object-fit:contain}
+.ig .txt{display:grid;place-items:center;text-align:center;padding:10px;font-family:var(--gotico);font-size:clamp(.9rem,2.6vw,1.3rem);line-height:1.05;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ig .txt.inv{background:var(--fumaca);-webkit-text-fill-color:var(--fosca);font-family:var(--util);font-size:.52rem;letter-spacing:.14em}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha)}
+.kpi{background:var(--grafite);padding:20px 18px}
+.kpi b{display:block;font-family:var(--gotico);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1;background:var(--cromo);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kpi span{font-family:var(--util);font-size:.52rem;letter-spacing:.16em;color:var(--apagada);display:block;margin-top:10px;line-height:1.8}
+
+.doc-fim{padding:40px 0 60px;text-align:center}
+.doc-fim p{font-family:var(--util);font-size:.52rem;letter-spacing:.2em;color:#3f3f49;line-height:2.2}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.vis{opacity:1;transform:none}
+footer{border-top:1px solid var(--linha);padding:clamp(40px,7vw,64px) 0 clamp(30px,5vw,44px);text-align:center}
+footer img{width:min(180px,52vw);margin:0 auto 16px}
+.links{display:flex;gap:clamp(14px,4vw,26px);justify-content:center;flex-wrap:wrap;margin:16px 0}
+.links button{font-family:var(--util);font-size:.56rem;letter-spacing:.17em;color:var(--fosca);transition:.3s}
+.links button:hover{color:var(--prata)}
+.credito{font-family:var(--util);font-size:.51rem;letter-spacing:.17em;color:#3c3c46;margin-top:20px;line-height:2}
+.toast{position:fixed;left:50%;bottom:calc(var(--barra) + 20px);transform:translate(-50%,180%);z-index:120;background:var(--papel);color:var(--tinta);padding:13px 22px;font-family:var(--util);font-size:.56rem;letter-spacing:.13em;transition:transform .4s cubic-bezier(.7,0,.2,1);max-width:90vw;text-align:center}
+.toast.mostra{transform:translate(-50%,0)}
+@media(min-width:881px){.toast{bottom:26px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="ticker"><div id="tickerTexto"></div></div>
+
+<header>
+  <img src="assets/logo-principal.jpg" alt="MLI.CO" class="logo-topo">
+  <div class="abas" role="tablist">
+    <button class="aba" role="tab" aria-selected="true" data-pagina="vitrine">Vitrine</button>
+    <button class="aba" role="tab" aria-selected="false" data-pagina="bastidores">Bastidores</button>
+  </div>
+  <button class="sacola-btn" data-abrir-sacola>SACOLA <i class="contador">0</i></button>
+</header>
+
+<!-- ═════════ VITRINE ═════════ -->
+<main class="pagina ativa" id="vitrine">
+
+  <div class="hero wrap">
+    <div id="brilhos"></div>
+    <span class="selo" id="seloDrop">DROP 01</span>
+    <h1 class="titulo cromo">Seis pessoas,<br>o mesmo armário</h1>
+    <p class="texto">Ninguém sai de casa pensando em peça. Sai pensando em como quer chegar. O drop 01 é um armário fechado em preto e seis maneiras de atravessar o mesmo dia — do primeiro compromisso das oito ao que aparecer depois das dez.</p>
+    <div class="acoes">
+      <button class="btn btn-cromo" data-ir="elenco">Ver os seis looks</button>
+      <button class="btn" data-ir="pecas">Só as peças</button>
+    </div>
+  </div>
+
+  <div id="elenco">
+    <div class="elenco-rolo">
+      <div class="elenco">
+        <img src="assets/lookbook.jpg" alt="Seis modelos lado a lado, cada uma com um look do drop 01" fetchpriority="high">
+        <div id="pontos"></div>
+      </div>
+    </div>
+    <p class="dica" id="dicaElenco">TOQUE EM QUALQUER UMA PARA ABRIR O LOOK</p>
+  </div>
+
+  <section class="wrap">
+    <div class="cabeca">
+      <div>
+        <span class="eyebrow">O elenco · um dia em seis horários</span>
+        <h2 class="titulo cromo" style="margin-top:12px">Os looks</h2>
+      </div>
+      <p class="texto">Cada look tem hora marcada. A ordem não é de tamanho nem de preço: é de quando você usa. Do expediente ao jantar, com centro e almoço no meio. Abra um para ver o que monta.</p>
+    </div>
+    <div class="looks" id="looks"></div>
+  </section>
+
+  <section class="wrap risca">
+    <div class="cabeca">
+      <div>
+        <span class="eyebrow">Manual de montagem</span>
+        <h2 class="titulo cromo" style="margin-top:12px">Três regras<br>e acabou</h2>
+      </div>
+      <p class="texto">Não precisa de consultoria, precisa de três decisões. Depois disso qualquer combinação do armário funciona — para trabalhar, resolver, almoçar fora ou não voltar para casa.</p>
+    </div>
+    <div class="manual">
+      <div class="regra-card">
+        <div class="palco">
+          <img src="assets/produtos/bomber-couro.png" alt="">
+          <img src="assets/produtos/mini-jeans.png" alt="">
+        </div>
+        <span class="regra-num">01</span>
+        <h4>VOLUME EM CIMA, CURTO EMBAIXO</h4>
+        <p>Ou o contrário. Largo com largo some com o corpo, justo com justo vira uniforme. Escolha um lado para inchar e deixe o outro quieto.</p>
+      </div>
+      <div class="regra-card">
+        <div class="palco foto"><img src="assets/looks/look-5.jpg" alt="Look com peça vinho"></div>
+        <span class="regra-num">02</span>
+        <h4>UMA COR POR LOOK</h4>
+        <p>Vinho, marrom, off-white ou cinza lavado: só uma delas por vez, em uma peça só. Todo o resto preto. É o que faz a mesma base servir para reunião de manhã e jantar à noite.</p>
+      </div>
+      <div class="regra-card">
+        <div class="palco">
+          <img src="assets/produtos/bolsa-hobo.png" alt="">
+          <img src="assets/produtos/tenis-chunky.png" alt="">
+        </div>
+        <span class="regra-num">03</span>
+        <h4>O BRILHO É METAL</h4>
+        <p>Ilhós, fivela, zíper, argola. Prata escovado, nunca pedra nem strass. O único brilho da marca é o mesmo da logo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap risca" id="pecas">
+    <div class="cabeca">
+      <div>
+        <span class="eyebrow">Drop 01 · Dia Inteiro · o armário completo</span>
+        <h2 class="titulo cromo" style="margin-top:12px">As peças</h2>
+      </div>
+      <p class="texto">Doze itens que se cruzam entre si. Cada um serve em pelo menos três horários diferentes do dia — é a única regra para uma peça entrar no drop.</p>
+    </div>
+    <div class="filtros" id="filtros"></div>
+    <div class="grade" id="grade"></div>
+  </section>
+
+  <section class="wrap risca" id="medidas">
+    <div class="cabeca">
+      <div>
+        <span class="eyebrow">Como serve</span>
+        <h2 class="titulo cromo" style="margin-top:12px">Medidas</h2>
+      </div>
+      <p class="texto">Medidas da peça deitada, em centímetros — não do corpo. Entre dois números, fique com o menor: a modelagem já nasce larga.</p>
+    </div>
+    <p class="eyebrow" style="margin-bottom:12px">Camisetas, tops, corsets e jaquetas</p>
+    <div class="tabela-rolo"><table>
+      <thead><tr><th>Tam</th><th>Ombro</th><th>Busto</th><th>Comprimento</th><th>Manga</th></tr></thead>
+      <tbody>
+        <tr><td>PP</td><td>46</td><td>106</td><td>52</td><td>21</td></tr>
+        <tr><td>P</td><td>48</td><td>112</td><td>54</td><td>22</td></tr>
+        <tr><td>M</td><td>50</td><td>118</td><td>56</td><td>23</td></tr>
+        <tr><td>G</td><td>52</td><td>124</td><td>58</td><td>24</td></tr>
+        <tr><td>GG</td><td>54</td><td>130</td><td>60</td><td>25</td></tr>
+        <tr><td>G2</td><td>57</td><td>138</td><td>62</td><td>26</td></tr>
+        <tr><td>G3</td><td>60</td><td>146</td><td>64</td><td>27</td></tr>
+      </tbody>
+    </table></div>
+    <p class="eyebrow" style="margin:32px 0 12px">Calças e saias</p>
+    <div class="tabela-rolo"><table>
+      <thead><tr><th>Tam</th><th>Cintura</th><th>Quadril</th><th>Gancho</th><th>Comprimento</th></tr></thead>
+      <tbody>
+        <tr><td>36</td><td>66</td><td>94</td><td>30</td><td>104</td></tr>
+        <tr><td>38</td><td>70</td><td>98</td><td>31</td><td>105</td></tr>
+        <tr><td>40</td><td>74</td><td>102</td><td>32</td><td>106</td></tr>
+        <tr><td>42</td><td>78</td><td>106</td><td>32</td><td>107</td></tr>
+        <tr><td>44</td><td>82</td><td>112</td><td>33</td><td>108</td></tr>
+        <tr><td>46</td><td>86</td><td>118</td><td>34</td><td>109</td></tr>
+      </tbody>
+    </table></div>
+    <p class="nota">Tolerância de 2 cm para mais ou para menos · Calçados numeram 34 ao 40 · Errou o tamanho? A primeira troca é por nossa conta, em até 30 dias.</p>
+  </section>
+
+  <section class="wrap risca">
+    <div class="cards">
+      <div class="cartao"><h4>OVERSIZED DE VERDADE</h4><p>Jaquetas e camisetas nascem duas medidas acima do corpo. Se você veste M, o M já cai largo — não precisa subir.</p></div>
+      <div class="cartao"><h4>PP AO G3, SEMPRE</h4><p>Toda peça sai na grade inteira, pelo mesmo preço. Não existe "linha plus": existe a coleção, na sua numeração.</p></div>
+      <div class="cartao"><h4>PRODUÇÃO NUMERADA</h4><p>Cada unidade sai com número na etiqueta. Quando a tiragem acaba, acabou — a peça não volta igual.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═════════ BASTIDORES ═════════ -->
+<main class="pagina" id="bastidores">
+<div class="doc">
+
+  <nav class="doc-indice" aria-label="Índice do documento">
+    <p class="indice-rot">ÍNDICE</p>
+    <ol id="indice"></ol>
+  </nav>
+
+  <div class="doc-corpo">
+
+    <header class="capa">
+      <span class="eyebrow">Manual de marca · Documento interno · Confidencial</span>
+      <h1 class="cromo">MLI.CO</h1>
+      <p class="texto">Tudo o que existe por trás da vitrine: posicionamento, público, identidade, cor, tipografia, voz, produto, embalagem, imagem, marketing e cronograma. Um documento só, para ser lido de cima a baixo antes de qualquer peça ser cortada.</p>
+      <dl class="ficha">
+        <div><dt>Cliente</dt><dd>MLI.CO</dd></div>
+        <div><dt>Projeto</dt><dd>Drop 01 · Dia Inteiro</dd></div>
+        <div><dt>Documento</dt><dd>Manual de marca</dd></div>
+        <div><dt>Versão</dt><dd>1.0</dd></div>
+        <div><dt>Praça</dt><dd>Curitiba / PR</dd></div>
+        <div><dt>Estreia</dt><dd>Março de 2027</dd></div>
+      </dl>
+    </header>
+
+    <!-- 00 -->
+    <section class="cap" id="cap0">
+      <div class="cap-topo"><span class="cap-num">00</span><h2>Resumo executivo</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">MLI.CO vende um armário fechado em preto para quem sai cedo e só volta tarde. Doze peças que se cruzam entre si, seis maneiras prontas de montá-las e uma regra de cor que impede o erro. Não competimos por variedade: competimos por certeza — a mesma base vai para a reunião das nove, para o almoço fora e para o jantar sem passar em casa para trocar.</p>
+      <span class="sub">Números do drop 01 · Dia Inteiro</span>
+      <div class="kpis">
+        <div class="kpi"><b>12</b><span>peças no armário</span></div>
+        <div class="kpi"><b>06</b><span>looks, das 8h às 22h</span></div>
+        <div class="kpi"><b>07</b><span>tamanhos, PP ao G3</span></div>
+        <div class="kpi"><b>30</b><span>unidades por peça no piloto</span></div>
+        <div class="kpi"><b>62%</b><span>margem bruta alvo</span></div>
+      </div>
+    </section>
+
+    <!-- 01 -->
+    <section class="cap" id="cap1">
+      <div class="cap-topo"><span class="cap-num">01</span><h2>Posicionamento</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto"><b style="color:var(--prata);font-weight:400">O problema:</b> o guarda-roupa das mulheres de 20 a 30 anos é dividido em duas gavetas que não conversam. Uma de roupa de trabalho, que é sem graça. Outra de roupa de sair, que não serve para nada antes das oito da noite. No meio do caminho — centro, almoço fora, café, cinema — não existe nada, e o resultado é sempre o mesmo improviso.</p>
+      <p class="texto"><b style="color:var(--prata);font-weight:400">A promessa:</b> uma gaveta só. Compre duas peças e você tem look; compre quatro e tem a semana inteira, do expediente ao jantar, sem passar em casa para trocar.</p>
+      <span class="sub">O que somos e o que não somos</span>
+      <div class="duo">
+        <div class="sim">
+          <h5>SOMOS</h5>
+          <ul>
+            <li>Um armário fechado que serve das 8h às 22h</li>
+            <li>Modelagem própria, testada em corpo real</li>
+            <li>Preto como base e cor como decisão</li>
+            <li>Produção limitada e numerada</li>
+            <li>Grade inteira pelo mesmo preço</li>
+          </ul>
+        </div>
+        <div class="nao">
+          <h5>NÃO SOMOS</h5>
+          <ul>
+            <li>Fast fashion com estampa nova toda semana</li>
+            <li>Roupa de balada que só serve depois das 22h</li>
+            <li>Marca de brilho, strass e pedraria</li>
+            <li>Loja de peça isolada, sem contexto de uso</li>
+            <li>Marca que cobra mais pelo tamanho maior</li>
+          </ul>
+        </div>
+      </div>
+      <span class="sub">Mapa de concorrência</span>
+      <div class="mapa">
+        <span class="eixo ex-y1">PREÇO ALTO</span>
+        <span class="eixo ex-y2">PREÇO BAIXO</span>
+        <span class="eixo ex-x1">SÓ TRABALHO</span>
+        <span class="eixo ex-x2">SÓ SAÍDA</span>
+        <span class="pin" style="left:20%;top:74%">Fast fashion de shopping</span>
+        <span class="pin" style="left:24%;top:34%">Alfaiataria corporativa</span>
+        <span class="pin" style="left:78%;top:80%">Loja de festa e balada</span>
+        <span class="pin" style="left:84%;top:28%">Grife de streetwear</span>
+        <span class="pin nos" style="left:52%;top:50%">MLI.CO</span>
+      </div>
+      <p class="nota">O espaço vazio é o meio: a peça que serve para os dois lados do dia. As marcas de trabalho não têm atitude, as de saída não servem antes da noite — e ninguém quer manter dois guarda-roupas.</p>
+    </section>
+
+    <!-- 02 -->
+    <section class="cap" id="cap2">
+      <div class="cap-topo"><span class="cap-num">02</span><h2>Público</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Mulheres de 18 a 30 anos, das capitais do Sul e Sudeste, que saem de casa cedo e voltam tarde. Trabalham, estudam, resolvem coisa no centro e ainda combinam alguma coisa à noite. Compram pelo celular, decidem pelo look inteiro e desistem quando não acham o tamanho.</p>
+      <div class="personas">
+        <div class="persona">
+          <span class="idade">22 ANOS · CURITIBA · ESTUDA E ESTAGIA</span>
+          <h5>A do dia dobrado</h5>
+          <p>Sai às sete da manhã com a roupa que vai usar até meia-noite. Não tem tempo nem espaço para voltar em casa e trocar. Gasta pouco e compra uma peça por drop.</p>
+          <p class="fala">"Só compro se servir no estágio e depois no bar."</p>
+        </div>
+        <div class="persona">
+          <span class="idade">27 ANOS · SÃO PAULO · AGÊNCIA, ESCRITÓRIO HÍBRIDO</span>
+          <h5>A do escritório sem dress code</h5>
+          <p>Ninguém manda ela usar terno, mas ela não quer parecer desarrumada. Aceita gastar mais em uma jaqueta de couro que resolve reunião de manhã e jantar à noite.</p>
+          <p class="fala">"Preciso parecer arrumada sem parecer que me esforcei."</p>
+        </div>
+        <div class="persona">
+          <span class="idade">24 ANOS · PORTO ALEGRE · ATENDIMENTO, VESTE G2</span>
+          <h5>A que veste G2</h5>
+          <p>Cansou de marca que para no GG ou cobra mais caro pelo tamanho maior. Passa o dia em pé no trabalho e quer roupa que aguente sem ficar apertada. Vira cliente fiel na primeira compra que serve.</p>
+          <p class="fala">"Se tiver meu tamanho na foto, eu compro na hora."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="cap" id="cap3">
+      <div class="cap-topo"><span class="cap-num">03</span><h2>Identidade visual</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Duas versões da logo, dois destinos. A cromada vive no digital e na embalagem; a de traço vazado é a que sobrevive à impressão e à costura.</p>
+      <div class="cards">
+        <div>
+          <div class="mostra negativo"><img src="assets/logo-principal.jpg" alt="Logo MLI.CO cromada sobre preto"></div>
+          <p class="regra"><b>PRINCIPAL — CROMO SOBRE PRETO</b><br>Site, redes, sacola, cartão. Nunca sobre foto clara. Margem livre em volta: a altura da letra M.</p>
+        </div>
+        <div>
+          <div class="mostra positivo"><img src="assets/logo-etiqueta.jpg" alt="Logo MLI.CO em traço preto sobre off-white"></div>
+          <p class="regra"><b>ETIQUETA — TRAÇO SOBRE OFF-WHITE</b><br>Tags, nota fiscal, carimbo, bordado. Uma cor só, sem degradê: é o que a gráfica e a bordadeira reproduzem.</p>
+        </div>
+      </div>
+      <span class="sub">Regras do nome</span>
+      <div class="cards">
+        <div class="cartao"><h4>ESCREVE-SE MLI.CO</h4><p>Lê-se "mili ponto co". A letra que falta é proposital: o nome se ouve inteiro e se escreve curto. Em @, hashtag e legenda, sempre MLI.CO.</p></div>
+        <div class="cartao"><h4>O PONTO DO MEIO</h4><p>O ponto entre MLI e CO é uma bola de espelho. É o único elemento que anda sozinho: avatar, favicon, botão, puxador de zíper, ilhós.</p></div>
+        <div class="cartao"><h4>A ÓRBITA</h4><p>A elipse com estrelas circula o nome como holofote girando. Some em aplicações pequenas — abaixo de 3 cm, use só a palavra.</p></div>
+      </div>
+      <span class="sub">Usos proibidos</span>
+      <div class="duo">
+        <div class="sim">
+          <h5>PODE</h5>
+          <ul>
+            <li>Reduzir até 3 cm mantendo a proporção</li>
+            <li>Usar só a palavra, sem a órbita</li>
+            <li>Usar o ponto sozinho como ícone</li>
+            <li>Gravar em relevo seco, sem cor</li>
+          </ul>
+        </div>
+        <div class="nao">
+          <h5>NÃO PODE</h5>
+          <ul>
+            <li>Esticar, inclinar ou espelhar</li>
+            <li>Recolorir fora de preto, cromo e off-white</li>
+            <li>Escrever MLICO junto ou Mili.co</li>
+            <li>Aplicar sombra externa ou contorno</li>
+            <li>Pôr a versão cromada sobre foto clara</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="cap" id="cap4">
+      <div class="cap-topo"><span class="cap-num">04</span><h2>Cor</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">O preto é a base e o cromo é a marca. As quatro cores de acento existem para uma coisa só: aparecer uma por vez, em uma peça por look. Vinho e marrom carregam a marca; off-white e cinza lavado entram para quebrar o preto sem virar cor. Foi assim que o lookbook foi fechado e é assim que a produção segue.</p>
+      <span class="sub">Base</span>
+      <div class="paleta">
+        <div class="tinta" style="background:#060607"><b>BREU</b><span>#060607 · fundo</span></div>
+        <div class="tinta" style="background:#0e0e11"><b>GRAFITE</b><span>#0E0E11 · cartões</span></div>
+        <div class="tinta" style="background:#17171c"><b>FUMAÇA</b><span>#17171C · relevo</span></div>
+        <div class="tinta" style="background:#dcdce3;color:#0b0b0d"><b>CROMO</b><span>#DCDCE3 · marca</span></div>
+        <div class="tinta" style="background:#efece5;color:#0b0b0d"><b>PAPEL</b><span>#EFECE5 · etiqueta</span></div>
+      </div>
+      <span class="sub">Acentos</span>
+      <div class="paleta">
+        <div class="tinta" style="background:#4a1220"><b>VINHO</b><span>#4A1220 · acento 1</span></div>
+        <div class="tinta" style="background:#3e2a20"><b>MARROM</b><span>#3E2A20 · acento 2</span></div>
+        <div class="tinta" style="background:#e3ddd2;color:#0b0b0d"><b>OFF-WHITE</b><span>#E3DDD2 · acento 3</span></div>
+        <div class="tinta" style="background:#6b7c93"><b>CINZA LAVADO</b><span>#6B7C93 · acento 4</span></div>
+      </div>
+      <p class="nota">Uma peça colorida por look, nunca duas · A cor entra em jaqueta, top, saia ou meia — nunca em duas ao mesmo tempo · Preto e cromo não contam como cor · Vinho e marrom são os acentos principais e nunca aparecem juntos: vinho puxa para a noite, marrom para o dia.</p>
+    </section>
+
+    <!-- 05 -->
+    <section class="cap" id="cap5">
+      <div class="cap-topo"><span class="cap-num">05</span><h2>Tipografia</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">A serifa fina da logo mora só dentro da logo. No resto do sistema, quem grita é a gótica e quem informa é a monoespaçada.</p>
+      <div class="tipo">
+        <div><span class="eyebrow">Pirata One · gótica</span><p class="regra" style="padding:8px 0 0">Só títulos, nomes de look e números. Nunca em texto corrido.</p></div>
+        <div class="amostra" style="font-family:var(--gotico)">Expediente · 08h</div>
+      </div>
+      <div class="tipo">
+        <div><span class="eyebrow">Jost · corpo</span><p class="regra" style="padding:8px 0 0">Descrição, manifesto, e-mail. Geométrica, leve, sem competir.</p></div>
+        <div class="amostra" style="font-family:var(--corpo);font-weight:300">Modelagem própria</div>
+      </div>
+      <div class="tipo">
+        <div><span class="eyebrow">Space Mono · dados</span><p class="regra" style="padding:8px 0 0">Preço, tamanho, código, etiqueta, botão. Informação dura.</p></div>
+        <div class="amostra" style="font-family:var(--util);font-size:clamp(1rem,3.5vw,1.6rem)">PP · M · G3 · R$ 349</div>
+      </div>
+      <span class="sub">Escala em uso</span>
+      <div class="escala">
+        <div><b>TÍTULO</b><span class="titulo cromo" style="font-size:clamp(1.8rem,5vw,2.6rem)">Os looks</span></div>
+        <div><b>SEÇÃO</b><span style="font-family:var(--util);font-weight:700;font-size:.85rem;letter-spacing:.16em">DIREÇÃO DE IMAGEM</span></div>
+        <div><b>CORPO</b><span style="font-size:1rem;color:#a2a2ad">Modelagem feita pra cair solta sem parecer grande demais.</span></div>
+        <div><b>DADO</b><span style="font-family:var(--util);font-size:.72rem">R$ 349,00 · TAM 40</span></div>
+        <div><b>MICRO</b><span class="eyebrow">DROP 01 · 12 PEÇAS</span></div>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="cap" id="cap6">
+      <div class="cap-topo"><span class="cap-num">06</span><h2>Voz e escrita</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Falamos como quem já esteve na fila: direto, sem eufemismo e sem vender emoção. Frase curta, verbo no presente, nenhuma promessa que a peça não cumpra. Nunca chamamos a cliente de "musa", "diva" ou "princesa".</p>
+      <span class="sub">Como escrevemos</span>
+      <div class="copy-par">
+        <div class="bom"><p class="rot">ASSIM</p><q>Cabe bota por baixo sem repuxar.</q></div>
+        <div class="ruim"><p class="rot">ASSIM NÃO</p><q>Uma peça statement para arrasar em qualquer ocasião!</q></div>
+      </div>
+      <div class="copy-par" style="margin-top:1px">
+        <div class="bom"><p class="rot">ASSIM</p><q>Errou o tamanho? A primeira troca é por nossa conta.</q></div>
+        <div class="ruim"><p class="rot">ASSIM NÃO</p><q>Consulte nossa política de trocas e devoluções.</q></div>
+      </div>
+      <div class="copy-par" style="margin-top:1px">
+        <div class="bom"><p class="rot">ASSIM</p><q>Acabou a tiragem. A peça não volta igual.</q></div>
+        <div class="ruim"><p class="rot">ASSIM NÃO</p><q>Produto temporariamente indisponível em estoque.</q></div>
+      </div>
+      <span class="sub">Vocabulário fixo</span>
+      <div class="cards">
+        <div class="cartao"><h4>DIZEMOS</h4><p>Armário · drop · peça · camada · tiragem · grade · look · horário.</p></div>
+        <div class="cartao"><h4>NÃO DIZEMOS</h4><p>Coleção cápsula · must have · atemporal · empoderar · exclusividade · lifestyle.</p></div>
+        <div class="cartao"><h4>ASSINATURA</h4><p>Toda comunicação fecha com MLI.CO e nada mais. Sem "siga a gente", sem emoji na assinatura.</p></div>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="cap" id="cap7">
+      <div class="cap-topo"><span class="cap-num">07</span><h2>Produto e preço</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">O armário é dividido em quatro camadas. Para entrar no drop, uma peça precisa passar em dois testes: combinar com pelo menos três peças de outra camada e servir em pelo menos três horários diferentes do dia. Preço fechado com margem bruta alvo de 62%, igual para todos os tamanhos.</p>
+      <div class="tabela-rolo"><table>
+        <thead><tr><th>Cód</th><th>Peça</th><th>Camada</th><th>Grade</th><th>Custo est.</th><th>Preço</th><th>Margem</th></tr></thead>
+        <tbody id="tabelaPrecos"></tbody>
+      </table></div>
+      <p class="nota">Custo estimado inclui tecido, aviamento, corte, costura e etiqueta — não inclui frete nem taxa de plataforma. Preço cheio, sem promoção: quem paga em dez dias paga o mesmo de quem paga no lançamento.</p>
+    </section>
+
+    <!-- 08 -->
+    <section class="cap" id="cap8">
+      <div class="cap-topo"><span class="cap-num">08</span><h2>Etiqueta e embalagem</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Tag em papel reciclado 300 g, ilhós prateado, cordão preto encerado. Frente vende, verso instrui.</p>
+      <div class="mesa">
+        <div>
+          <div class="tag">
+            <img src="assets/logo-etiqueta.jpg" alt="Logo na etiqueta">
+            <div class="fio"></div>
+            <div class="tag-lista">
+              <div><span>PEÇA</span><span>BAGGY BALÃO</span></div>
+              <div><span>COR</span><span>PRETO LAVADO</span></div>
+              <div><span>TAM</span><span>40</span></div>
+              <div><span>CÓD</span><span>MC-01-0534</span></div>
+            </div>
+            <div class="fio"></div>
+            <div class="tag-nota">MLI.CO · EST. 2027 · CURITIBA/PR<br>R$ 349,00</div>
+          </div>
+          <p class="legenda">FRENTE · 5,5 × 9 CM</p>
+        </div>
+        <div>
+          <div class="tag">
+            <div class="tag-lista">
+              <div><span>COMPOSIÇÃO</span><span>98% ALGODÃO 2% ELASTANO</span></div>
+              <div><span>TECIDO</span><span>JEANS 13 OZ</span></div>
+              <div><span>ORIGEM</span><span>BRASIL</span></div>
+            </div>
+            <div class="fio"></div>
+            <div class="simbolos" aria-hidden="true">◵ ⊗ ▤ ⊘ ◻</div>
+            <div class="tag-nota">Lave do avesso em água fria · Não use alvejante · Passe morno · Não seque na máquina · Seque à sombra</div>
+            <div class="fio"></div>
+            <div class="tag-nota">Guarde a etiqueta: vale 10% na próxima compra.</div>
+          </div>
+          <p class="legenda">VERSO · CUIDADOS</p>
+        </div>
+        <div>
+          <div class="cartao" style="border:1px solid var(--linha)">
+            <h4>ETIQUETA INTERNA</h4>
+            <p>Bordada em cetim preto com fio prata, costurada na lateral esquerda da barra — nunca na nuca.</p>
+          </div>
+          <div class="cartao" style="border:1px solid var(--linha);border-top:none">
+            <h4>LEITURA DO CÓDIGO</h4>
+            <p class="regra" style="padding:0"><b>MC</b> marca · <b>01</b> drop · <b>05</b> peça · <b>34</b> unidade na tiragem.</p>
+          </div>
+        </div>
+      </div>
+      <span class="sub">Kit de envio</span>
+      <div class="cards">
+        <div class="cartao"><h4>SACOLA</h4><p>Plástico opaco preto reciclado, logo cromada centralizada, lacre adesivo. Sem nome de transportadora impresso.</p></div>
+        <div class="cartao"><h4>PAPEL DE SEDA</h4><p>Preto, com o ponto-bola-de-espelho repetido em marca d'água prata. Fecha com um adesivo redondo.</p></div>
+        <div class="cartao"><h4>CARTÃO</h4><p>Off-white, uma frase escrita à mão pela costureira que fez a peça, com o número da unidade e a data.</p></div>
+        <div class="cartao"><h4>BRINDE</h4><p>Um adesivo do ponto por pedido. Dois, se a compra for de look completo.</p></div>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="cap" id="cap9">
+      <div class="cap-topo"><span class="cap-num">09</span><h2>Direção de imagem</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Uma única receita de foto, repetida em todo drop: fundo cinza claro liso, luz dura vinda de cima, sombra curta no chão, corpo inteiro e olhar para a câmera. Luz de dia, não de balada: o armário é de dia inteiro e a foto precisa dizer isso antes da legenda.</p>
+      <div class="elenco-rolo" style="border:1px solid var(--linha)">
+        <div class="elenco" style="min-width:820px"><img src="assets/lookbook.jpg" alt="Referência de lookbook: seis modelos em fundo cinza"></div>
+      </div>
+      <p class="legenda" style="text-align:left;margin-top:10px">REFERÊNCIA APROVADA · LOOKBOOK DROP 01</p>
+      <div class="duo" style="margin-top:26px">
+        <div class="sim">
+          <h5>FAZER</h5>
+          <ul>
+            <li>Fundo cinza claro, sempre o mesmo</li>
+            <li>Corpo inteiro, do sapato ao cabelo</li>
+            <li>Seis modelos de tipos físicos diferentes</li>
+            <li>Peça de acento sozinha no quadro</li>
+            <li>Foto de produto recortada em fundo preto</li>
+          </ul>
+        </div>
+        <div class="nao">
+          <h5>NÃO FAZER</h5>
+          <ul>
+            <li>Fundo preto no editorial (some com a roupa)</li>
+            <li>Filtro, granulado ou vazamento de luz</li>
+            <li>Corte na altura do joelho</li>
+            <li>Cenário de balada, luz colorida, neon</li>
+            <li>Foto noturna com flash direto</li>
+          </ul>
+        </div>
+      </div>
+      <span class="sub">Grade do perfil</span>
+      <div class="ig">
+        <div><img src="assets/looks/look-1.jpg" alt=""></div>
+        <div class="prod"><img src="assets/produtos/bomber-couro.png" alt=""></div>
+        <div><img src="assets/looks/look-2.jpg" alt=""></div>
+        <div class="prod"><img src="assets/produtos/bota-cano-alto.png" alt=""></div>
+        <div class="txt">Das 8h às 22h</div>
+        <div class="prod"><img src="assets/produtos/baggy-balao.png" alt=""></div>
+        <div><img src="assets/looks/look-5.jpg" alt=""></div>
+        <div class="txt inv">DROP 01<br>EM BREVE</div>
+        <div><img src="assets/looks/look-4.jpg" alt=""></div>
+      </div>
+      <p class="nota">Ritmo fixo de três em três: look, produto recortado, look. A cada nove posts, um card só de texto. A grade nunca fica com duas fotos de fundo cinza lado a lado.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="cap" id="cap10">
+      <div class="cap-topo"><span class="cap-num">10</span><h2>Marketing e lançamento</h2></div>
+      <div class="cap-linha"></div>
+      <p class="texto">Sem anúncio pago antes do lookbook estar pronto. A estratégia é de escassez organizada: mostrar o armário inteiro de uma vez, abrir pré-venda por tempo curto e produzir só o que foi vendido. O argumento de venda nunca é a peça isolada — é o custo por uso.</p>
+      <span class="sub">Funil</span>
+      <div class="cards">
+        <div class="cartao"><h4>1 · ATRAIR</h4><p>Reels de "a mesma peça em três horários" e recorte de peça girando em fundo preto. Parceria com quem mostra rotina real de trabalho e cidade, não com quem só posta produção de festa.</p></div>
+        <div class="cartao"><h4>2 · CONVENCER</h4><p>Lookbook completo, tabela de medidas visível antes do preço e vídeo da peça em corpos de PP a G3. A dúvida de tamanho é o que mais derruba venda; a segunda é não saber onde usar.</p></div>
+        <div class="cartao"><h4>3 · FECHAR</h4><p>Pré-venda de sete dias com contador. Look completo com frete grátis. Depois disso, produção sob demanda com prazo declarado.</p></div>
+        <div class="cartao"><h4>4 · MANTER</h4><p>Etiqueta guardada vale 10% no drop seguinte. Lista de espera por tamanho, avisada por e-mail antes do público.</p></div>
+      </div>
+      <span class="sub">Calendário de lançamento</span>
+      <div class="tabela-rolo"><table>
+        <thead><tr><th>Semana</th><th>Canal</th><th>Peça de comunicação</th><th>Meta</th></tr></thead>
+        <tbody>
+          <tr><td>−4</td><td>Instagram</td><td>Teaser do ponto girando, sem nome</td><td>Curiosidade</td></tr>
+          <tr><td>−3</td><td>Instagram</td><td>Revelação da logo e do manifesto</td><td>1.000 seguidores</td></tr>
+          <tr><td>−2</td><td>Instagram + TikTok</td><td>Lookbook em série: um post por horário do dia</td><td>Alcance</td></tr>
+          <tr><td>−1</td><td>E-mail + perfil</td><td>Tabela de medidas e bastidores do ateliê</td><td>500 e-mails</td></tr>
+          <tr><td>00</td><td>Site</td><td>Abertura da pré-venda, 7 dias</td><td>90 peças</td></tr>
+          <tr><td>+2</td><td>Instagram</td><td>Cliente real usando no trabalho, repost em série</td><td>Prova social</td></tr>
+          <tr><td>+6</td><td>Site</td><td>Reposição por lista de espera</td><td>Recompra</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- 11 -->
+    <section class="cap" id="cap11">
+      <div class="cap-topo"><span class="cap-num">11</span><h2>Cronograma e investimento</h2></div>
+      <div class="cap-linha"></div>
+      <div class="tempo">
+        <div class="marco"><span class="eyebrow">Fase 1 · mês 1 a 3</span><h4>PILOTO DE TRÊS PEÇAS</h4><p>Jersey 77, baggy balão e saia de pregas. Costura em ateliê parceiro, tiragem de 30 unidades por peça só para testar modelagem em corpo real, de PP a G3.</p></div>
+        <div class="marco"><span class="eyebrow">Fase 2 · mês 4</span><h4>LOOKBOOK E PRÉ-VENDA</h4><p>Seis modelos, seis looks, fundo cinza e luz dura. Pré-venda por link no perfil, produção sob demanda para não sobrar estoque.</p></div>
+        <div class="marco"><span class="eyebrow">Fase 3 · mês 5 a 8</span><h4>DROP 01 COMPLETO</h4><p>Doze peças, etiqueta numerada, loja própria no ar. Estreia em março de 2027, junto com a volta da rotina depois do verão.</p></div>
+      </div>
+      <span class="sub">Investimento estimado do piloto</span>
+      <div class="tabela-rolo"><table>
+        <thead><tr><th>Item</th><th>Descrição</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Modelagem</td><td>Três moldes com graduação PP ao G3</td><td>R$ 2.400</td></tr>
+          <tr><td>Tecido e aviamento</td><td>90 peças piloto</td><td>R$ 7.200</td></tr>
+          <tr><td>Costura</td><td>Ateliê parceiro, por peça</td><td>R$ 4.500</td></tr>
+          <tr><td>Etiqueta e embalagem</td><td>Tag, bordado, sacola, adesivo</td><td>R$ 1.100</td></tr>
+          <tr><td>Lookbook</td><td>Estúdio, luz, seis modelos, edição</td><td>R$ 3.800</td></tr>
+          <tr><td>Site e domínio</td><td>Loja própria, primeiro ano</td><td>R$ 900</td></tr>
+          <tr><td><b style="color:var(--prata);font-weight:400">TOTAL</b></td><td>Antes da primeira venda</td><td><b style="color:var(--prata);font-weight:400">R$ 19.900</b></td></tr>
+        </tbody>
+      </table></div>
+      <p class="nota">Valores estimados para planejamento, sujeitos a orçamento. Ponto de equilíbrio do piloto: 68 peças vendidas ao preço cheio.</p>
+    </section>
+
+    <div class="doc-fim">
+      <p>FIM DO DOCUMENTO<br>MLI.CO · MANUAL DE MARCA v1.0 · USO INTERNO</p>
+    </div>
+
+  </div>
+</div>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-principal.jpg" alt="MLI.CO">
+    <div class="links">
+      <button data-ir="elenco">LOOKS</button>
+      <button data-ir="pecas">PEÇAS</button>
+      <button data-ir="medidas">MEDIDAS</button>
+      <button data-pagina-ir="bastidores">BASTIDORES</button>
+    </div>
+    <p class="credito">MLI.CO · EST. 2027 · CURITIBA/PR<br>PROJETO DE APRESENTAÇÃO — LOJA FICTÍCIA, SEM VENDA REAL</p>
+  </div>
+</footer>
+
+<nav class="barra">
+  <button data-pagina="vitrine" aria-selected="true">VITRINE</button>
+  <button data-pagina="bastidores" aria-selected="false">BASTIDORES</button>
+  <button class="comprar" data-abrir-sacola>SACOLA <span class="contador">0</span></button>
+</nav>
+
+<div class="cortina" id="cortina"></div>
+
+<aside class="gaveta" id="painel" aria-hidden="true" aria-label="Detalhe">
+  <div class="gaveta-topo">
+    <span class="eyebrow" id="painelTopo">MC-01</span>
+    <button class="fecha" id="fecharPainel">FECHAR ✕</button>
+  </div>
+  <div id="painelConteudo"></div>
+</aside>
+
+<aside class="gaveta" id="sacola" aria-hidden="true" aria-label="Sacola">
+  <div class="gaveta-topo">
+    <span class="eyebrow">Sua sacola</span>
+    <button class="fecha" id="fecharSacola">FECHAR ✕</button>
+  </div>
+  <div class="sacola-itens" id="sacolaItens"></div>
+  <div class="sacola-pe">
+    <div class="total"><span>TOTAL</span><span id="totalValor">R$ 0,00</span></div>
+    <button class="cta" id="finalizar">Finalizar compra</button>
+    <p class="aviso">Frete grátis acima de R$ 299 · Primeira troca por nossa conta</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ═════════ DADOS ═════════ */
+const GRADES = {
+  letras:["PP","P","M","G","GG","G2","G3"],
+  numeros:["36","38","40","42","44","46"],
+  calcados:["34","35","36","37","38","39","40"],
+  unico:["ÚNICO"]
+};
+const CORES_HEX = { "Preto":"#0b0b0d","Preto lavado":"#2b2b31","Grafite":"#45454f","Prata":"linear-gradient(140deg,#fff,#87878f)","Preto e branco":"linear-gradient(120deg,#0b0b0d 50%,#e8e8ec 50%)","Marrom":"#3e2a20" };
+const ACENTOS = { VINHO:"#4a1220", MARROM:"#3e2a20", "OFF-WHITE":"#e3ddd2", CINZA:"#6b7c93", PRETO:"#0b0b0d" };
+
+const PECAS = [
+  { id:"jersey-77", n:"00", nome:"JERSEY 77 CROPPED", camada:"base", spec:"Malha rede lavada · manga curta · barra crua",
+    preco:209, grade:"letras", esgotados:["PP"], tarja:"NOVO", cores:["Preto lavado","Grafite"],
+    desc:"Camiseta de time em malha rede lavada, com o 77 estampado em relevo desbotado. Corte cropped e ombro caído — feita para cair por cima de saia ou baggy sem pedir cinto." },
+  { id:"top-um-ombro", n:"01", nome:"TOP UM OMBRO", camada:"base", spec:"Viscose canelada · franzido lateral · um ombro",
+    preco:149, grade:"letras", esgotados:[], tarja:"", cores:["Preto","Grafite"],
+    desc:"Um ombro só, franzido lateral que ajusta o comprimento e canelado com elastano que fica no lugar o dia inteiro. A peça mais leve do armário e a que mais aparece." },
+  { id:"corset-jeans", n:"02", nome:"CORSET JEANS", camada:"base", spec:"Jeans estruturado · barbatanas · zíper nas costas",
+    preco:289, grade:"letras", esgotados:["G3"], tarja:"ÚLTIMAS", cores:["Preto lavado"],
+    desc:"Jeans pesado com barbatanas flexíveis, alça reta e fecho de zíper atrás. Estrutura de corset sem apertar as costelas: dá para sentar à mesa, jantar e respirar." },
+  { id:"bomber-couro", n:"03", nome:"BOMBER DE COURO", camada:"peso", spec:"Couro ecológico · ombro caído · punho elástico",
+    preco:649, grade:"letras", esgotados:["PP"], tarja:"", cores:["Preto","Marrom"],
+    desc:"Bomber oversized em couro ecológico encorpado, gola alta, punho e barra em elástico. Ombro caído bem marcado — o volume da coleção inteira sai daqui." },
+  { id:"jaqueta-moto", n:"04", nome:"JAQUETA MOTO", camada:"peso", spec:"Couro ecológico · gola caída · zíper diagonal",
+    preco:589, grade:"letras", esgotados:["G3"], tarja:"", cores:["Preto","Marrom"],
+    desc:"A motociclista clássica: zíper diagonal, gola de lapela virada, cinto na cintura e bolso de zíper no peito. Comprimento curto para andar por cima de tudo." },
+  { id:"baggy-balao", n:"05", nome:"BAGGY BALÃO", camada:"peso", spec:"Jeans 13oz · cintura alta · barra afunilada",
+    preco:349, grade:"numeros", esgotados:[], tarja:"NOVO", cores:["Preto lavado","Grafite"],
+    desc:"Jeans 13 oz com lavagem manual, cintura alta e volume de balão que fecha no tornozelo. Cabe bota por baixo sem repuxar." },
+  { id:"alfaiataria-wide", n:"06", nome:"ALFAIATARIA WIDE", camada:"peso", spec:"Tecido pesado · pregas · perna larga",
+    preco:379, grade:"numeros", esgotados:["46"], tarja:"", cores:["Preto"],
+    desc:"Alfaiataria de tecido pesado com prega marcada e perna larga do quadril ao chão. É a peça que faz um top simples parecer produção." },
+  { id:"saia-pregas", n:"07", nome:"SAIA PREGAS ILHÓS", camada:"base", spec:"Pregas fixas · ilhós duplo · forro curto",
+    preco:199, grade:"numeros", esgotados:[], tarja:"", cores:["Preto"],
+    desc:"Pregas costuradas até o quadril para não abrir demais, cós com fileira dupla de ilhós prateados e short-forro embutido." },
+  { id:"mini-jeans", n:"08", nome:"MINI JEANS", camada:"base", spec:"Jeans lavado · cós baixo · cinco bolsos",
+    preco:189, grade:"numeros", esgotados:["36"], tarja:"", cores:["Preto lavado"],
+    desc:"Mini de jeans lavado, cós baixo e cinco bolsos, com barra desfiada à mão. Cada peça desfia diferente — é para ser assim." },
+  { id:"bota-cano-alto", n:"09", nome:"BOTA CANO ALTO", camada:"pe", spec:"Cano alto · salto bloco 6cm · zíper interno",
+    preco:749, grade:"calcados", esgotados:["34"], tarja:"", cores:["Preto","Marrom"],
+    desc:"Cano alto até abaixo do joelho, salto bloco de 6 cm e zíper interno inteiro. Salto grosso o bastante para atravessar o dia inteiro em pé." },
+  { id:"tenis-chunky", n:"10", nome:"TÊNIS CHUNKY", camada:"pe", spec:"Solado alto · preto e branco · cadarço duplo",
+    preco:529, grade:"calcados", esgotados:[], tarja:"", cores:["Preto e branco"],
+    desc:"Solado alto com entressola dupla, cabedal em painéis pretos e brancos e cadarço extra na caixa. O único item do armário que não é preto inteiro — e é de propósito." },
+  { id:"bolsa-hobo", n:"11", nome:"BOLSA HOBO", camada:"mao", spec:"Couro ecológico · fivelas · alça de ombro",
+    preco:329, grade:"unico", esgotados:[], tarja:"ÚLTIMAS", cores:["Preto","Marrom"],
+    desc:"Formato hobo com alça curta que encaixa no ombro, fivelas prateadas nas laterais e bolso interno com zíper. Cabe celular, chave, carteira e batom — o que se leva para o trabalho e continua servindo à noite." }
+];
+
+const CAMADAS = { base:"Camada base", peso:"Camada peso", pe:"Pé", mao:"Mão" };
+
+const LOOKS = [
+  { n:"01", hora:"08H", nome:"Expediente", acento:"MARROM", img:1, x:0,
+    frase:"Reunião às nove e nada de terno. Couro por cima, jeans largo embaixo, top justo no meio: arrumada sem parecer fantasiada de executiva.",
+    monta:["bomber-couro","bolsa-hobo"], extras:["Top marrom de alça","Wide leg lavada cinza"] },
+  { n:"02", hora:"10H", nome:"Centro", acento:"PRETO", img:2, x:16.666,
+    frase:"Banco, cartório e três quarteirões a pé. Tudo preto, tênis no pé e as mãos livres — dá pra andar o dia inteiro sem pensar na roupa.",
+    monta:["baggy-balao","tenis-chunky"], extras:["Top de tule estampado","Cinto de ilhós duplo"] },
+  { n:"03", hora:"12H", nome:"Almoço", acento:"MARROM", img:3, x:33.333,
+    frase:"Almoço fora com quem você não vê há meses. Saia até o tornozelo e camiseta lisa: o look que funciona sentada, que é onde ele vai passar a hora inteira.",
+    monta:["bolsa-hobo","bota-cano-alto"], extras:["Camiseta off-white de costura aparente","Saia midi cargo marrom"] },
+  { n:"04", hora:"16H", nome:"Fim da tarde", acento:"VINHO", img:4, x:50,
+    frase:"Saiu mais cedo, resolveu uma coisa, sentou num café. Camiseta grande sobre saia curta e a meia vinho aparecendo: o acento mais barato do armário.",
+    monta:["jersey-77","tenis-chunky"], extras:["Saia-short envelope com ilhós","Meia canelada vinho"] },
+  { n:"05", hora:"19H", nome:"Jantar", acento:"VINHO", img:5, x:66.666,
+    frase:"Mesa reservada, foto na saída. Zíper vinho justo em cima, denim largo embaixo: a proporção que faz jantar parecer produção.",
+    monta:["alfaiataria-wide","bolsa-hobo"], extras:["Jaqueta zip vinho e off-white","Tênis de corrida vinho"] },
+  { n:"06", hora:"22H", nome:"Depois", acento:"OFF-WHITE", img:6, x:83.333,
+    frase:"Alguém chamou pra outro lugar e você foi. Jaqueta de corrida preta e branca sobre tudo preto — o único look dos seis em que o brilho está no pé.",
+    monta:["alfaiataria-wide","top-um-ombro"], extras:["Bomber racing preto e branco","Tênis prata"] }
+];
+
+/* ═════════ ATALHOS ═════════ */
+const brl = v => "R$ " + v.toFixed(2).replace(".", ",");
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const acha = id => PECAS.find(p => p.id === id);
+const foto = p => `assets/produtos/${p.id}.png`;
+
+/* ═════════ ELENCO ═════════ */
+const pontos = $("#pontos");
+LOOKS.forEach((l, i) => {
+  const b = document.createElement("button");
+  b.className = "ponto";
+  b.style.left = l.x + "%";
+  b.setAttribute("aria-label", `Look ${l.n}, ${l.nome}, ${l.hora}`);
+  b.innerHTML = `<span>${l.hora} · ${l.nome.toUpperCase()}<br>VER O LOOK</span>`;
+  b.onclick = () => abreLook(i);
+  pontos.appendChild(b);
+});
+
+/* ═════════ LOOKS ═════════ */
+const cxLooks = $("#looks");
+LOOKS.forEach((l, i) => {
+  const b = document.createElement("button");
+  b.className = "look";
+  b.innerHTML = `
+    <div class="look-foto">
+      <img src="assets/looks/look-${l.img}.jpg" alt="Look ${l.n} — ${l.nome}" loading="lazy">
+      <span class="look-hora">${l.n} · ${l.hora}</span>
+      <span class="look-chip" style="background:${ACENTOS[l.acento]}"></span>
+    </div>
+    <div class="look-corpo">
+      <div class="look-nome">${l.nome}</div>
+      <p class="look-frase">${l.frase}</p>
+      <div class="look-cor">COR DO LOOK · ${l.acento}</div>
+    </div>`;
+  b.onclick = () => abreLook(i);
+  cxLooks.appendChild(b);
+});
+
+/* ═════════ PEÇAS ═════════ */
+const grade = $("#grade");
+function desenhaGrade(){
+  grade.innerHTML = "";
+  PECAS.forEach((p, i) => {
+    const g = GRADES[p.grade];
+    const faixa = p.grade === "unico" ? "TAM ÚNICO" : g[0] + " à " + g[g.length-1];
+    const b = document.createElement("button");
+    b.className = "peca"; b.dataset.camada = p.camada;
+    b.setAttribute("aria-label", p.nome + ", " + brl(p.preco));
+    b.innerHTML = `
+      <div class="moldura">
+        <img src="${foto(p)}" alt="${p.nome}" loading="lazy">
+        <span class="num">${p.n}</span>
+        ${p.tarja ? `<span class="tarja">${p.tarja}</span>` : ""}
+      </div>
+      <div class="peca-nome">${p.nome}</div>
+      <div class="peca-spec">${p.spec}</div>
+      <div class="peca-pe"><span class="peca-preco">${brl(p.preco)}</span><span class="peca-grade">${faixa}</span></div>`;
+    b.onclick = () => abrePeca(i);
+    grade.appendChild(b);
+  });
+}
+desenhaGrade();
+
+const filtros = $("#filtros");
+[["tudo","Tudo"], ...Object.entries(CAMADAS)].forEach(([k, rot], i) => {
+  const b = document.createElement("button");
+  b.className = "filtro"; b.textContent = rot;
+  b.setAttribute("aria-pressed", String(i === 0));
+  b.onclick = () => {
+    $$(".filtro").forEach(f => f.setAttribute("aria-pressed", String(f === b)));
+    $$(".peca").forEach(p => p.classList.toggle("some", k !== "tudo" && p.dataset.camada !== k));
+  };
+  filtros.appendChild(b);
+});
+$("#seloDrop").textContent = `DROP 01 · ${PECAS.length} PEÇAS · ${LOOKS.length} LOOKS`;
+
+/* ═════════ GAVETA: LOOK ═════════ */
+function abreLook(i){
+  const l = LOOKS[i];
+  $("#painelTopo").textContent = `LOOK ${l.n} · ${l.hora}`;
+  const itens = l.monta.map(id => {
+    const p = acha(id);
+    return `<button class="monta-item" data-peca="${id}">
+      <span class="monta-mini"><img src="${foto(p)}" alt=""></span>
+      <span class="monta-txt"><b>${p.nome}</b><span>${brl(p.preco)} · ${CAMADAS[p.camada]}</span></span>
+      <span class="monta-seta">VER →</span>
+    </button>`;
+  }).join("");
+  const fora = l.extras.map(e => `<div class="monta-item">
+      <span class="monta-mini fora">FORA DO<br>DROP</span>
+      <span class="monta-txt"><b>${e.toUpperCase()}</b><span>referência de estilo</span></span>
+    </div>`).join("");
+
+  $("#painelConteudo").innerHTML = `
+    <div class="corpo2">
+      <div class="lado-foto"><img src="assets/looks/look-${l.img}.jpg" alt="Look ${l.n} — ${l.nome}"></div>
+      <div class="lado-dados">
+        <span class="eyebrow">${l.hora} · COR DO LOOK: ${l.acento}</span>
+        <h3 class="grande cromo">${l.nome}</h3>
+        <p class="desc">${l.frase}</p>
+        <span class="eyebrow">O que monta</span>
+        <div class="monta">${itens}${fora}</div>
+        <button class="cta" id="addLook" style="margin-top:24px">Levar ${l.monta.length===1?"a peça":"as "+l.monta.length+" peças"} do look</button>
+        <p class="aviso">As peças do look vão para a sacola no tamanho M ou 40 — dá para trocar depois.<br>Loja de apresentação: nenhuma cobrança é feita.</p>
+      </div>
+    </div>`;
+
+  $$("#painelConteudo [data-peca]").forEach(b => b.onclick = () => {
+    abrePeca(PECAS.findIndex(p => p.id === b.dataset.peca));
+  });
+  $("#addLook").onclick = () => {
+    l.monta.forEach(id => {
+      const p = acha(id);
+      const g = GRADES[p.grade];
+      const t = g.includes("M") ? "M" : g.includes("40") ? "40" : g[Math.floor(g.length/2)];
+      poeNaSacola(p, p.cores[0], t, 1);
+    });
+    fechaTudo(); avisa(`LOOK ${l.n} · ${l.nome.toUpperCase()} NA SACOLA`);
+  };
+  abreGaveta("#painel");
+}
+
+/* ═════════ GAVETA: PEÇA ═════════ */
+let atual = null, cor = null, tam = null, qtd = 1;
+
+function abrePeca(i){
+  atual = PECAS[i]; cor = atual.cores[0]; qtd = 1;
+  const g = GRADES[atual.grade];
+  tam = atual.grade === "unico" ? "ÚNICO" : null;
+  $("#painelTopo").textContent = `MC-01-${atual.n}`;
+
+  $("#painelConteudo").innerHTML = `
+    <div class="corpo2">
+      <div class="lado-foto peca-foto"><img src="${foto(atual)}" alt="${atual.nome}"></div>
+      <div class="lado-dados">
+        <span class="eyebrow">${CAMADAS[atual.camada]}</span>
+        <h3>${atual.nome}</h3>
+        <p class="preco">${brl(atual.preco)} · até 3x sem juros</p>
+        <p class="desc">${atual.desc}</p>
+        <div class="campo">
+          <label><span class="eyebrow">Cor</span><span class="escolhido" id="corEscolhida"></span></label>
+          <div class="cores" id="cores"></div>
+        </div>
+        <div class="campo">
+          <label><span class="eyebrow">Tamanho</span><button class="link" data-ir="medidas">ver medidas</button></label>
+          <div class="tamanhos" id="tamanhos"></div>
+        </div>
+        <div class="campo">
+          <label><span class="eyebrow">Quantidade</span></label>
+          <div class="qtd">
+            <button id="menos" aria-label="Diminuir">−</button><span id="qtdValor">1</span><button id="mais" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+        <button class="cta" id="addSacola" disabled>Escolha um tamanho</button>
+        <p class="aviso">Loja de apresentação — nenhuma cobrança é feita.</p>
+        <div class="etiqueta">
+          <img src="assets/logo-etiqueta.jpg" alt="">
+          <div class="etq-linhas">
+            <div><span>PEÇA</span><span id="etqNome">—</span></div>
+            <div><span>COR</span><span id="etqCor">—</span></div>
+            <div><span>TAM</span><span id="etqTam">—</span></div>
+            <div><span>CÓD</span><span id="etqCod">—</span></div>
+          </div>
+        </div>
+        <p class="legenda">A etiqueta que vem na sua peça</p>
+      </div>
+    </div>`;
+
+  const cx = $("#cores");
+  atual.cores.forEach(c => {
+    const el = document.createElement("button");
+    el.className = "cor"; el.style.background = CORES_HEX[c] || "#0b0b0d";
+    el.title = c; el.setAttribute("aria-label", c);
+    el.onclick = () => { cor = c; pintaCores(); atualiza(); };
+    cx.appendChild(el);
+  });
+  const tx = $("#tamanhos");
+  g.forEach(t => {
+    const el = document.createElement("button");
+    el.className = "tam"; el.textContent = t;
+    el.setAttribute("aria-pressed", String(t === tam));
+    if (atual.esgotados.includes(t)) el.disabled = true;
+    el.onclick = () => {
+      tam = t;
+      $$("#tamanhos .tam").forEach(x => x.setAttribute("aria-pressed", String(x.textContent === t)));
+      atualiza();
+    };
+    tx.appendChild(el);
+  });
+
+  $("#mais").onclick  = () => { qtd = Math.min(qtd+1, 9); $("#qtdValor").textContent = qtd; atualiza(); };
+  $("#menos").onclick = () => { qtd = Math.max(qtd-1, 1); $("#qtdValor").textContent = qtd; atualiza(); };
+  $("#addSacola").onclick = () => {
+    if (!tam) return;
+    poeNaSacola(atual, cor, tam, qtd);
+    fechaTudo(); avisa(atual.nome + " NA SACOLA");
+  };
+  $$("#painelConteudo [data-ir]").forEach(b => b.onclick = () => irPara(b.dataset.ir));
+
+  pintaCores(); atualiza(); abreGaveta("#painel");
+}
+
+function pintaCores(){
+  $$("#cores .cor").forEach(el => el.setAttribute("aria-pressed", String(el.title === cor)));
+  $("#corEscolhida").textContent = cor;
+}
+function atualiza(){
+  const btn = $("#addSacola");
+  btn.disabled = !tam;
+  btn.textContent = tam ? "Adicionar à sacola · " + brl(atual.preco*qtd) : "Escolha um tamanho";
+  $("#etqNome").textContent = atual.nome;
+  $("#etqCor").textContent  = (cor||"—").toUpperCase();
+  $("#etqTam").textContent  = tam || "—";
+  $("#etqCod").textContent  = `MC-01-${atual.n}34`;
+}
+
+/* ═════════ GAVETAS ═════════ */
+function abreGaveta(sel){
+  $(sel).classList.add("abre"); $(sel).setAttribute("aria-hidden","false");
+  $("#cortina").classList.add("abre"); document.body.style.overflow = "hidden";
+}
+function fechaTudo(){
+  $$(".gaveta").forEach(g => { g.classList.remove("abre"); g.setAttribute("aria-hidden","true"); });
+  $("#cortina").classList.remove("abre"); document.body.style.overflow = "";
+}
+$("#fecharPainel").onclick = fechaTudo;
+$("#fecharSacola").onclick = fechaTudo;
+$("#cortina").onclick = fechaTudo;
+document.addEventListener("keydown", e => { if (e.key === "Escape") fechaTudo(); });
+$$("[data-abrir-sacola]").forEach(b => b.onclick = () => abreGaveta("#sacola"));
+
+/* ═════════ SACOLA ═════════ */
+let sacola = [];
+function poeNaSacola(p, c, t, q){
+  const chave = p.id + c + t;
+  const achou = sacola.find(i => i.chave === chave);
+  if (achou) achou.qtd += q; else sacola.push({ chave, id:p.id, nome:p.nome, cor:c, tam:t, preco:p.preco, qtd:q });
+  desenhaSacola();
+}
+function desenhaSacola(){
+  const box = $("#sacolaItens");
+  const total = sacola.reduce((s,i) => s + i.preco*i.qtd, 0);
+  const n = sacola.reduce((s,i) => s + i.qtd, 0);
+  $$(".contador").forEach(c => c.textContent = n);
+  $("#totalValor").textContent = brl(total);
+  if (!sacola.length){
+    box.innerHTML = `<div class="vazia">SUA SACOLA ESTÁ VAZIA<br>COMECE POR UM LOOK<br>E TIRE O QUE NÃO QUISER</div>`;
+    return;
+  }
+  box.innerHTML = sacola.map((i,k) => `
+    <div class="item">
+      <div>
+        <h4>${i.nome}</h4>
+        <p>${i.cor.toUpperCase()} · TAM ${i.tam} · ${i.qtd} UN</p>
+        <button data-r="${k}">remover</button>
+      </div>
+      <strong>${brl(i.preco*i.qtd)}</strong>
+    </div>`).join("");
+  box.querySelectorAll("[data-r]").forEach(b => b.onclick = () => { sacola.splice(+b.dataset.r,1); desenhaSacola(); });
+}
+$("#finalizar").onclick = () => avisa(sacola.length ? "VITRINE DE APRESENTAÇÃO — SEM PAGAMENTO" : "SACOLA VAZIA");
+desenhaSacola();
+
+/* ═════════ AVISO ═════════ */
+let tempo;
+function avisa(txt){
+  const t = $("#toast"); t.textContent = txt; t.classList.add("mostra");
+  clearTimeout(tempo); tempo = setTimeout(() => t.classList.remove("mostra"), 2600);
+}
+
+/* ═════════ NAVEGAÇÃO ═════════ */
+function vaiPara(pag){
+  $$("[data-pagina]").forEach(x => x.setAttribute("aria-selected", String(x.dataset.pagina === pag)));
+  $$(".pagina").forEach(p => p.classList.toggle("ativa", p.id === pag));
+  window.scrollTo(0,0);
+  history.replaceState(null,"","#"+pag);
+}
+function irPara(alvo){
+  fechaTudo(); vaiPara("vitrine");
+  setTimeout(() => $("#"+alvo).scrollIntoView({behavior:"smooth",block:"start"}), 60);
+}
+$$("[data-pagina]").forEach(b => b.onclick = () => vaiPara(b.dataset.pagina));
+$$("[data-pagina-ir]").forEach(b => b.onclick = () => vaiPara(b.dataset.paginaIr));
+$$("[data-ir]").forEach(b => b.onclick = () => irPara(b.dataset.ir));
+if (location.hash === "#bastidores") vaiPara("bastidores");
+
+/* ═════════ TICKER ═════════ */
+$("#tickerTexto").innerHTML =
+  ("DROP 01 · DIA INTEIRO&nbsp;&nbsp;✝&nbsp;&nbsp;DAS 8H ÀS 22H&nbsp;&nbsp;✝&nbsp;&nbsp;SEIS LOOKS, DOZE PEÇAS&nbsp;&nbsp;✝&nbsp;&nbsp;FRETE GRÁTIS ACIMA DE R$ 299&nbsp;&nbsp;✝&nbsp;&nbsp;PP AO G3&nbsp;&nbsp;✝&nbsp;&nbsp;PRODUÇÃO NUMERADA&nbsp;&nbsp;✝&nbsp;&nbsp;").repeat(6);
+
+/* ═════════ BRILHOS ═════════ */
+const bx = $("#brilhos");
+for (let i = 0; i < 14; i++){
+  const s = document.createElement("i");
+  s.className = "brilho";
+  s.style.left = Math.random()*100 + "%";
+  s.style.top  = Math.random()*100 + "%";
+  s.style.animationDelay = (Math.random()*5) + "s";
+  bx.appendChild(s);
+}
+
+/* ═════════ REVELAR ═════════ */
+const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add("vis"); }), {threshold:.1});
+$$(".reveal").forEach(el => obs.observe(el));
+
+/* ═════════ DOCUMENTO (BASTIDORES) ═════════ */
+const CAPS = ["Resumo executivo","Posicionamento","Público","Identidade visual","Cor","Tipografia",
+              "Voz e escrita","Produto e preço","Etiqueta e embalagem","Direção de imagem",
+              "Marketing e lançamento","Cronograma e investimento"];
+const indice = $("#indice");
+CAPS.forEach((t, i) => {
+  const li = document.createElement("li");
+  const b = document.createElement("button");
+  b.textContent = String(i).padStart(2,"0") + "  " + t;
+  b.dataset.cap = "cap" + i;
+  b.setAttribute("aria-current", String(i === 0));
+  b.onclick = () => $("#cap"+i).scrollIntoView({behavior:"smooth",block:"start"});
+  li.appendChild(b); indice.appendChild(li);
+});
+
+const espiao = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    $$("#indice button").forEach(b => b.setAttribute("aria-current", String(b.dataset.cap === e.target.id)));
+    const at = $(`#indice button[data-cap="${e.target.id}"]`);
+    if (at && innerWidth < 1040) at.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+  });
+}, { rootMargin:"-15% 0px -70% 0px" });
+$$(".cap").forEach(c => espiao.observe(c));
+
+/* tabela de preço e margem, montada a partir do catálogo */
+const tp = $("#tabelaPrecos");
+if (tp){
+  tp.innerHTML = PECAS.map(p => {
+    const g = GRADES[p.grade];
+    const faixa = p.grade === "unico" ? "único" : g[0]+"–"+g[g.length-1];
+    const custo = p.preco * 0.38;
+    return `<tr><td>${p.n}</td><td>${p.nome}</td><td>${CAMADAS[p.camada]}</td><td>${faixa}</td>
+      <td>${brl(custo)}</td><td>${brl(p.preco)}</td><td>62%</td></tr>`;
+  }).join("");
+}
+
+/* dica de arrastar só quando a fileira não cabe */
+addEventListener("load", () => {
+  const rolo = document.querySelector(".elenco-rolo");
+  if (rolo.scrollWidth <= rolo.clientWidth + 4) $("#dicaElenco").textContent = "CLIQUE EM QUALQUER UMA PARA ABRIR O LOOK";
+  else $("#dicaElenco").textContent = "ARRASTE PARA O LADO · TOQUE PARA ABRIR O LOOK";
+});
+</script>
+</body>
+</html>
